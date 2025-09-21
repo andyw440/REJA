@@ -5,21 +5,26 @@ console.log('training task ishga tushdi.');
     sozdan qatnashga sonini return qilishi kerak boladi. MASALAN countLetter("e", "engineer") 3ni return qiladi.
 */
 // #Solve 
-// function countLetter(letter,word){
-//     const arr = word.split('')
-//     let count = 0
-   
-//     arr.forEach(item => {
-//         if(item === letter){
-//             count++
-//         }
-//     })
-//     return count
+function countLetter(letter,word){
+    if(typeof letter === 'string' && typeof word === 'string'){
+        const arr = word.split('')
+        let count = 0
+       
+        arr.forEach(item => {
+            if(item === letter){
+                count++
+            }
+        })
+        return count
+    }else{
+        console.log('please enter word and letter !');
+        
+    }
+}
 
-    
-// }
+console.log(countLetter('a' , 'banana'));
+console.log('============');
 
-// console.log(countLetter('r' , 'cristiano'));
 
 
 const list = [
@@ -79,7 +84,7 @@ console.log('passed here 1');
     
 
 
-// 2-EXAMPLE for callback
+// EXAMPLE for callback
 
 // const fs = require('fs')
 
