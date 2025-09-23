@@ -1,17 +1,43 @@
 console.log('training task ishga tushdi.');
 
-/*
-    Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi 
+
+  /* 
+      Shunday 2 parametrli function tuzing, hamda birinchi parametrdagi letterni ikkinchi parametrdagi 
     sozdan qatnashga sonini return qilishi kerak boladi. MASALAN countLetter("e", "engineer") 3ni return qiladi.
-*/
+  */
+ 
+
+// #Solve
+
+// function countSpaces(text){
+//     //1-usul
+//     // const parts = text.split(' ')
+//     // return parts.length - 1
+
+//     // 2-usul
+
+//     let spaceCount = 0
+
+//     for(let i = 0 ; i < text.length ; i++){
+//         if(text[i] === ' '){
+            
+//             spaceCount++
+//         }
+//     }
+//     return spaceCount
+// }
+
+// console.log(countSpaces('hello everybody'));
+
+
 // #Solve 
 function countLetter(letter,word){
     if(typeof letter === 'string' && typeof word === 'string'){
-        const arr = word.split('')
+        const arr = word.toLowerCase().split('')
         let count = 0
        
         arr.forEach(item => {
-            if(item === letter){
+            if(item === letter.toLowerCase()){
                 count++
             }
         })
@@ -22,8 +48,27 @@ function countLetter(letter,word){
     }
 }
 
-console.log(countLetter('a' , 'banana'));
+
+
+console.log(countLetter('A' , 'banana'));
 console.log('============');
+
+function countNumber(text){
+    if(typeof text === 'string'){
+        text =  text.split('')
+        let counter = 0
+        text.forEach(item => {
+            if(!isNaN(item) && item !== ' '){
+                counter++
+            }
+        })
+        return counter
+    }
+
+}
+
+console.log('ishtirok etgan raqamlar soni :',countNumber('salom1232'));
+
 
 
 
@@ -55,18 +100,18 @@ async function maslahatBering(age){
 
 
 //async/await - to'liq javob olinmaguncha keyingi qismga o'tmaydi . step by step ishlashga juda katta yordam beradi .
-console.log('passed here 0');
+// console.log('passed here 0');
 
-async function run(){
-    let javob = await maslahatBering(65)
-    console.log(javob);
-     javob = await maslahatBering(20);
-    console.log(javob);
-    javob = await maslahatBering(45)
-    console.log(javob);
-}
-run()
-console.log('passed here 1');
+// async function run(){
+//     let javob = await maslahatBering(65)
+//     console.log(javob);
+//      javob = await maslahatBering(20);
+//     console.log(javob);
+//     javob = await maslahatBering(45)
+//     console.log(javob);
+// }
+// run() 
+// console.log('passed here 1');
 
 
 // then/catch
