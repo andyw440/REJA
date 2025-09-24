@@ -1,4 +1,4 @@
-console.log('training task ishga tushdi.');
+// console.log('training task ishga tushdi.');
 
 
   /* 
@@ -31,28 +31,31 @@ console.log('training task ishga tushdi.');
 
 
 // #Solve 
-function countLetter(letter,word){
-    if(typeof letter === 'string' && typeof word === 'string'){
-        const arr = word.toLowerCase().split('')
-        let count = 0
+// function countLetter(letter,word){
+//     if(typeof letter === 'string' && typeof word === 'string'){
+//         const arr = word.toLowerCase().split('')
+//         let count = 0
        
-        arr.forEach(item => {
-            if(item === letter.toLowerCase()){
-                count++
-            }
-        })
-        return count
-    }else{
-        console.log('please enter word and letter !');
+//         arr.forEach(item => {
+//             if(item === letter.toLowerCase()){
+//                 count++
+//             }
+//         })
+//         return count
+//     }else{
+//         console.log('please enter word and letter !');
         
-    }
-}
+//     }
+// }
 
 
 
-console.log(countLetter('A' , 'banana'));
-console.log('============');
+// console.log(countLetter('A' , 'banana'));
+// console.log('============');
 
+
+
+// TASK B
 function countNumber(text){
     if(typeof text === 'string'){
         text =  text.split('')
@@ -67,35 +70,35 @@ function countNumber(text){
 
 }
 
-console.log('ishtirok etgan raqamlar soni :',countNumber('salom1232'));
+console.log('TASK B , ishtirok etgan raqamlar soni:',countNumber('salom1232'));
 
 
 
 
-const list = [
-    'yaxshi talaba boling' , //0-20
-    'togri boshliq tanlang , va koproq xato qiling' , //20-30
-    "uzingizga ishlashni boshlang", //30-40
-    "siz kuchli bolgan narsalarni qiling" ,  //40-50
-    "yoshlarga investitsya qiling", //50-60
-    "endi dam oling ,  endi kech afsus"
-]
+// const list = [
+//     'yaxshi talaba boling' , //0-20
+//     'togri boshliq tanlang , va koproq xato qiling' , //20-30
+//     "uzingizga ishlashni boshlang", //30-40
+//     "siz kuchli bolgan narsalarni qiling" ,  //40-50
+//     "yoshlarga investitsya qiling", //50-60
+//     "endi dam oling ,  endi kech afsus"
+// ]
 
-async function maslahatBering(age){
-    if(typeof age !== 'number')  throw new Error('insert a number')
-        else if(age <= 20) return list[0];
-    else if(age >20 && age<=30) return list[1]
-    else if(age >30 && age<=40) return list[2]
-    else if(age >40 && age<=50) return list[3]
-    else if(age >50 && age<=60) return list[4]
-    else{
-    return new Promise((resolve, reject) => {
-             setTimeout(() => {
-            resolve(list[5]) 
-        },5000);
-    });
-    }
-}
+// async function maslahatBering(age){
+//     if(typeof age !== 'number')  throw new Error('insert a number')
+//         else if(age <= 20) return list[0];
+//     else if(age >20 && age<=30) return list[1]
+//     else if(age >30 && age<=40) return list[2]
+//     else if(age >40 && age<=50) return list[3]
+//     else if(age >50 && age<=60) return list[4]
+//     else{
+//     return new Promise((resolve, reject) => {
+//              setTimeout(() => {
+//             resolve(list[5]) 
+//         },5000);
+//     });
+//     }
+// }
 
 
 
