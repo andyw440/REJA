@@ -1,8 +1,9 @@
 const http = require('http')
 const app = require('./app')
-const mongodb = require("mongodb")
-let db;
-const connectionString = "mongodb+srv://asror2006:Asror2006%40@cluster0.98iemob.mongodb.net/Reja"
+const mongodb = require('mongodb')
+
+const connectionString = "mongodb+srv://asror2006:Asror2006%40@cluster0.98iemob.mongodb.net/Plan"
+
 
 mongodb.connect(connectionString ,{useNewUrlParser:true , useUnifiedTopology:true},
     (err,client) => {
@@ -10,9 +11,7 @@ mongodb.connect(connectionString ,{useNewUrlParser:true , useUnifiedTopology:tru
             console.log("ERROR:" , err);     
         }else{
             console.log('MongoDB connected successfully');
-            module.exports = client.db("mydb")
-            
-            const app = require('./app')
+            module.exports = client
             const server = http.createServer(app)
             const PORT = 3000
             server.listen(PORT , () => {
