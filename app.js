@@ -18,13 +18,14 @@ fs.readFile("database/user.json" , "utf8" , (err,data) =>{
 
 
 // MongoDB connect
+// const db = require('./server').db()
 
 
 
 // #1 Kirish code
-app.use(express.static('public')) // Middleware design pattern
-app.use(express.json())
-app.use(express.urlencoded({extended:true}));
+app.use(express.static('public')) // Middleware design pattern - publicni ochiqlaydi
+app.use(express.json()) // Middleware design pattern - Rest API
+app.use(express.urlencoded({extended:true})); // Traditional API
 
 
 // #2 session code  
@@ -38,40 +39,47 @@ app.set("view engine" , "ejs")
 
 // #4 Routing code
 
-
-
 app.get("/author", (req,res) => {
     res.render("author", { user: user })
 })
 
-app.get('/' , (req,res) => {
-    console.log('user entered /');
-    
-  require('./server').db().collection('plans')
-    .find()
-    .toArray((err, data) => {
-      if (err) {
-        console.log('Error: ', err);
-        res.end('Something went wrong');
-      } else {
-        console.log('data: ', data);
-        res.render('reja', { items: data });
-      }
-    });
-})
+
 
 app.post("/create-item" , function(req,res){
     console.log('user entered /create-item')
-    const new_reja = req.body.reja
+    console.log('STEP2: FRONTEND > BACKENDGA entrance');
+    const new_reja = req.body
 
-   require('./server').db().collection("plans").insertOne({reja:new_reja} , (err,data) => {
-        if(err){
-            console.log(err);
-            res.send('something went wrong!')
-        }else{
-            res.send('successfully added!')
-        }
+    console.log('STEP3: BACKEND > DATABASE request');
+    const db = require('./server').db()
+   db.collection('plans').insertOne(new_reja , (err,data) => {
+        console.log('STEP4: DATABASE > BACKEND response  ');
+       
+        console.log('STEP5:BACKEND > FRONTEND response');
+        console.log(data.ops);
+        
+           res.json(data.ops[0])
+        
     })
 })
+
+app.get('/' , (req,res) => {
+    console.log('user entered /');
+    console.log('STEP2: FRONTEND > BACKENDGA entrance');
+    
+    console.log('STEP3: BACKEND > DATABASE request');
+    
+    const db = require('./server').db()
+  db.collection('plans')
+    .find()
+    .toArray((err,data) => {
+        console.log('STEP4: DATABASE > BACKEND response  ');
+        console.log('db:' , data);
+       
+        console.log('STEP5:BACKEND > FRONTEND response');
+        res.render('reja', { items: data });
+      
+    });
+})  
 
 module.exports = app
