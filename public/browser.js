@@ -37,6 +37,23 @@ axios.post("/create-item", {reja:createField.value})
 })
 .catch((err) => {
     console.log('iltimos qaytadan harakat qiling.');
-    
 })
 })
+
+
+document.addEventListener('click', (e) => {
+    if(e.target.classList.contains('delete-me')){
+        if(confirm('Aniq ochirmoqchimisiz ?')){
+            axios.post("/delete-item" , {id:e.target.getAttribute("data-id")})
+            .then((response) => {
+                e.target.parentElement.parentElement.remove()
+            })
+            .catch((err) => {   
+                console.log('iltimos qaytadan harakat qiling.');
+                
+            })
+        }
+    }
+})
+
+ 

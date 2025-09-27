@@ -1,7 +1,7 @@
 console.log('web serverni boshlash .');
 const express = require('express')
 const app = express()
-const http = require("http")
+const mongodb = require('mongodb')
 const fs = require("fs");
 
 
@@ -61,6 +61,15 @@ app.post("/create-item" , function(req,res){
            res.json(data.ops[0])
         
     })
+})
+
+app.post('/delete-item' , (req,res) => {
+    const id = req.body.id
+    const db = require('./server').db()
+    db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, (err,data) => {
+        res.json({state:"success"})
+    })
+        
 })
 
 app.get('/' , (req,res) => {
