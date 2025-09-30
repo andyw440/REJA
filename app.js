@@ -84,6 +84,15 @@ app.post('/edit-item' , (req,res) => {
     
 })
 
+app.post('/delete-all' , (req,res) => {
+    if(req.body.delete_all){
+        const db = require('./server').db()
+        db.collection("plans").deleteMany(function(){
+            res.json({state : "hamma rejalar o'chirildi." })
+        })
+    }
+})
+
 
 app.get('/' , (req,res) => {
     console.log('user entered /');
