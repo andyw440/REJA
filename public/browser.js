@@ -1,3 +1,4 @@
+
 console.log('browser js');
 
 function itemTemplate(item){
@@ -31,6 +32,8 @@ e.preventDefault()
 
 axios.post("/create-item", {reja:createField.value})
 .then((response) => {
+  console.log(response.data);
+  
     document.getElementById('item-list').insertAdjacentHTML("beforeend" , itemTemplate(response.data))
     createField.value = ""
     createField.focus()
@@ -57,3 +60,39 @@ document.addEventListener('click', (e) => {
 })
 
  
+document.addEventListener("click", function (e) {
+// delete oper
+    if(e.target.classList.contains("delete-me")) {
+        if(confirm("Aniq o'chirmoqchimisiz"))
+        axios
+            .post("/delete-item", {id: e.target.getAttribute("data-id") })
+        .then((response) => {
+            console.log(response.data);
+            e.target.parentElement.parentElement.remove();
+        })
+        .catch((err) => {
+            console.log("iltimos qaytadan urunib ko'ring");
+        });
+    }
+    
+// edit oper
+    if(e.target.classList.contains("edit-me")) {
+      let initialValue = e.target.parentElement.parentElement.querySelector(".item-text").innerHTML
+     let userInput = prompt("Yangi o'zgartirish kiriting" , initialValue ) 
+     if(userInput){
+      axios
+      .post("/edit-item  ", {id:e.target.getAttribute("data-id"), 
+        new_input:userInput,
+      }).then((response) => {
+        console.log(response.data);   
+        e.target.parentElement.parentElement.querySelector(".item-text").innerHTML = userInput      
+      })
+        .catch((err) => {
+          console.log('iltimos qaytadan harakat qiling:');
+          
+        })
+        
+      
+     }
+    }
+});

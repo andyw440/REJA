@@ -49,6 +49,7 @@ app.post("/create-item" , function(req,res){
     console.log('user entered /create-item')
     console.log('STEP2: FRONTEND > BACKENDGA entrance');
     const new_reja = req.body
+    console.log(req.body);
 
     console.log('STEP3: BACKEND > DATABASE request');
     const db = require('./server').db()
@@ -71,6 +72,18 @@ app.post('/delete-item' , (req,res) => {
     })
         
 })
+
+app.post('/edit-item' , (req,res) => {
+    const data = req.body
+    console.log(data);
+    const db = require('./server').db()
+    db.collection("plans").findOneAndUpdate({_id: new mongodb.ObjectId(data.id)}, 
+    {$set: {reja:data.new_input}}, (err,data) => {
+        res.json({state:"success"})
+    })
+    
+})
+
 
 app.get('/' , (req,res) => {
     console.log('user entered /');

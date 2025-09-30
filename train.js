@@ -85,145 +85,188 @@ MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta 
 */
 
 
-class Shop{
-    constructor(countOfNon, countOfLagmon, CountOfCola ){
-        this.countOfNon = countOfNon
-        this.countOfLagmon = countOfLagmon
-        this.CountOfCola = CountOfCola
-    }
+// class Shop{
+//     constructor(non, lagmon, cola ){
+//         this.non = non
+//         this.lagmon = lagmon
+//         this.cola = cola
+//     }
 
-    // Methods
+//     // Methods
 
-    qoldiq(){
-        const time = new Date()
-        const hours = time.getHours()
-        const minutes = time.getMinutes()
-        return `hozir ${hours}:${minutes}da ${this.countOfNon}ta non , ${this.countOfLagmon}ta lagmon , ${this.CountOfCola}ta cola mavjud!`
-    }
+//     qoldiq(){
+//         const time = new Date()
+//         const hours = time.getHours()
+//         const minutes = time.getMinutes()
+//         return `hozir ${hours}:${minutes}da ${this.non}ta non , ${this.lagmon}ta lagmon , ${this.cola}ta cola mavjud!`
+//     }
 
-    sotish(sellItem, sellCount){
-        if(sellItem === 'non'){
-            this.countOfNon -= sellCount
-        }
-        if(sellItem === 'lagmon'){
-            this.countOfLagmon -= sellCount
-        }
+//     sotish(sellItem, sellCount){
+//        if(this[sellItem] !== undefined){
+//         if(this[sellItem] >= sellCount){
+//             console.log(this[sellItem]);
+//             this[sellItem] -= sellCount
+            
+//             console.log(`${sellCount}ta ${sellItem} sotildi .`);
+//         }else{
+//             console.log(`kechirasiz, ${sellItem} yetarli emas .`);
+//         }
+        
+//        }
+//        else{
+//         console.log(`Bunday mahsulot yo'q:${sellItem}`);
+        
+//        }
+//     }
 
-        if(sellItem === 'cola'){
-            this.CountOfCola -= sellCount
-        }
-    }
+//     qabul(receiveItem , receiveCount){
+//         if(this[receiveItem] !== undefined){
+//             this[receiveItem] += receiveCount
+//             console.log(`${receiveCount}ta ${receiveItem} qo'shildi .`);
+//         }
+//         else{
+//             console.log(`Bunday mahsulot yo'q:${receiveItem}`);
+            
+//         }
+//     }
+// }
 
-    qabul(receiveItem , receiveCount){
-        if(receiveItem === 'non'){
-            this.countOfNon +=receiveCount
-        }
-        if(receiveItem === 'lagmon'){
-            this.countOfLagmon += receiveCount
-        }
-        if(receiveItem === 'cola'){
-            this.CountOfCola += receiveCount
-        }
+
+
+
+
+
+// const shop = new Shop(4, 5, 5)
+
+// console.log(shop.qoldiq());
+// console.log('========================');
+
+// shop.sotish('cola',2)
+
+// console.log(shop.qoldiq());
+
+// console.log('========================');
+
+// shop.qabul('non',2)
+// console.log(shop.qoldiq());
+
+
+
+/* 
+    @MITASK
+
+    TASK D : 
+Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
+MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
+*/
+
+
+function checkContent(string1,string2){
+   string1 = string1.split("").sort().join("")
+   string2 = string2.split("").sort().join("")
+
+if(string1.length == string2.length && string1 == string2){
+   return true
+}else{
+    return false
+}
+
+   
+    
+}
+console.log("checkContent:",checkContent('leapp' , 'apple'));
+
+
+
+
+
+
+/*
+
+const list = [
+    'yaxshi talaba boling' , //0-20
+    'togri boshliq tanlang , va koproq xato qiling' , //20-30
+    "uzingizga ishlashni boshlang", //30-40
+    "siz kuchli bolgan narsalarni qiling" ,  //40-50
+    "yoshlarga investitsya qiling", //50-60
+    "endi dam oling ,  endi kech afsus"
+]
+
+async function maslahatBering(age){
+    if(typeof age !== 'number')  throw new Error('insert a number')
+        else if(age <= 20) return list[0];
+    else if(age >20 && age<=30) return list[1]
+    else if(age >30 && age<=40) return list[2]
+    else if(age >40 && age<=50) return list[3]
+    else if(age >50 && age<=60) return list[4]
+    else{
+    return new Promise((resolve, reject) => {
+             setTimeout(() => {
+            resolve(list[5]) 
+        },5000);
+    });
     }
 }
 
-const shop = new Shop(4, 5, 2)
-
-console.log(shop.qoldiq());
-console.log('========================');
-
-shop.sotish('non',2)
-
-console.log(shop.qoldiq());
-
-console.log('========================');
-
-shop.qabul('cola',5)
-console.log(shop.qoldiq());
 
 
+async/await - to'liq javob olinmaguncha keyingi qismga o'tmaydi . step by step ishlashga juda katta yordam beradi .
+console.log('passed here 0');
+
+async function run(){
+    let javob = await maslahatBering(65)
+    console.log(javob);
+     javob = await maslahatBering(20);
+    console.log(javob);
+    javob = await maslahatBering(45)
+    console.log(javob);
+}
+run() 
+console.log('passed here 1');
 
 
-
-
-
-
-
-
-
-// const list = [
-//     'yaxshi talaba boling' , //0-20
-//     'togri boshliq tanlang , va koproq xato qiling' , //20-30
-//     "uzingizga ishlashni boshlang", //30-40
-//     "siz kuchli bolgan narsalarni qiling" ,  //40-50
-//     "yoshlarga investitsya qiling", //50-60
-//     "endi dam oling ,  endi kech afsus"
-// ]
-
-// async function maslahatBering(age){
-//     if(typeof age !== 'number')  throw new Error('insert a number')
-//         else if(age <= 20) return list[0];
-//     else if(age >20 && age<=30) return list[1]
-//     else if(age >30 && age<=40) return list[2]
-//     else if(age >40 && age<=50) return list[3]
-//     else if(age >50 && age<=60) return list[4]
-//     else{
-//     return new Promise((resolve, reject) => {
-//              setTimeout(() => {
-//             resolve(list[5]) 
-//         },5000);
-//     });
-//     }
-// }
-
-
-
-//async/await - to'liq javob olinmaguncha keyingi qismga o'tmaydi . step by step ishlashga juda katta yordam beradi .
-// console.log('passed here 0');
-
-// async function run(){
-//     let javob = await maslahatBering(65)
-//     console.log(javob);
-//      javob = await maslahatBering(20);
-//     console.log(javob);
-//     javob = await maslahatBering(45)
-//     console.log(javob);
-// }
-// run() 
-// console.log('passed here 1');
-
-
-// then/catch
-// console.log('passed here 0'); // sync task
-// maslahatBering(35) // microtask in event loop
-//                 .then((data )=> console.log('javob:', data))
-//                 .catch(err => console.log('ERROR:' , err))
+then/catch
+console.log('passed here 0'); // sync task
+maslahatBering(35) // microtask in event loop
+                .then((data )=> console.log('javob:', data))
+                .catch(err => console.log('ERROR:' , err))
                 
-// // in event loop micro tasks will be done before macrotasks 
+// in event loop micro tasks will be done before macrotasks 
 
-// setTimeout(() => { // macrotask 
-//     console.log('it took 2 seconds to read async settimeout');
+setTimeout(() => { // macrotask 
+    console.log('it took 2 seconds to read async settimeout');
     
-// },2000)
+},2000)
     
 
 
-// EXAMPLE for callback
+EXAMPLE for callback
 
-// const fs = require('fs')
+const fs = require('fs')
 
-// console.log('1. Fayl oqish boshlandi .');
+console.log('1. Fayl oqish boshlandi .');
 
-// fs.readFile('text.txt' ,'utf-8' , (err,data) => {
-//     if(err){
-//         console.error('xatolik yuz berdi :' , err);
-//         return;
-//     }
-//     console.log("3. Fayl  o'qildi. Ma'lumot:");
-//     console.log(data);
+fs.readFile('text.txt' ,'utf-8' , (err,data) => {
+    if(err){
+        console.error('xatolik yuz berdi :' , err);
+        return;
+    }
+    console.log("3. Fayl  o'qildi. Ma'lumot:");
+    console.log(data);
     
-// })
+})
 
-// console.log("2. Fayl o'qish boshlangan dastur boshqa ishlarni bajarmoqda...");
+console.log("2. Fayl o'qish boshlangan dastur boshqa ishlarni bajarmoqda...");
+*/
+
+
+
+
+
+
+
+
+
+
 
 
