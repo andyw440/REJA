@@ -13,7 +13,7 @@ mongodb.connect(connectionString
         }else{
             console.log('MongoDB connected successfully');
             const server = http.createServer(app)
-            const PORT = 3000
+            const PORT = 4007
             server.listen(PORT , () => {
                 console.log(`server is running on port : ${PORT} , http://localhost:${PORT}`);
                 module.exports = client
