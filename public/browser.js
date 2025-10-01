@@ -60,42 +60,7 @@ document.addEventListener('click', (e) => {
 })
 
  
-document.addEventListener("click", function (e) {
-// delete oper
-    if(e.target.classList.contains("delete-me")) {
-        if(confirm("Aniq o'chirmoqchimisiz"))
-        axios
-            .post("/delete-item", {id: e.target.getAttribute("data-id") })
-        .then((response) => {
-            console.log(response.data);
-            e.target.parentElement.parentElement.remove();
-        })
-        .catch((err) => {
-            console.log("iltimos qaytadan urunib ko'ring");
-        });
-    }
-    
-// edit oper
-    if(e.target.classList.contains("edit-me")) {
-      let initialValue = e.target.parentElement.parentElement.querySelector(".item-text").innerHTML
-     let userInput = prompt("Yangi o'zgartirish kiriting" , initialValue ) 
-     if(userInput){
-      axios
-      .post("/edit-item  ", {id:e.target.getAttribute("data-id"), 
-        new_input:userInput,
-      }).then((response) => {
-        console.log(response.data);   
-        e.target.parentElement.parentElement.querySelector(".item-text").innerHTML = userInput      
-      })
-        .catch((err) => {
-          console.log('iltimos qaytadan harakat qiling:');
-          
-        })
-        
-      
-     }
-    }
-});
+
 
 document.getElementById("clean-all").addEventListener("click" , () => {
   axios.post("/delete-all" , {delete_all:true}).then(response => {
