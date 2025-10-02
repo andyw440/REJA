@@ -161,24 +161,39 @@ MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
 */
 
 
-function checkContent(string1,string2){
-   string1 = string1.split("").sort().join("")
-   string2 = string2.split("").sort().join("")
+// function checkContent(string1,string2){
+//    string1 = string1.split("").sort().join("")
+//    string2 = string2.split("").sort().join("")
 
-if(string1.length == string2.length && string1 == string2){
-   return true
-}else{
-    return false
-}
+// if(string1.length == string2.length && string1 == string2){
+//    return true
+// }else{
+//     return false
+// }
 
    
     
-}
-console.log("checkContent:",checkContent('leapp' , 'apple'));
+// }
+// console.log("checkContent:",checkContent('leapp' , 'apple'));
 
 
 
+    /* 
+        E-TASK: 
 
+        Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.
+        MASALAN: getReverse("hello") return qilsin "olleh"
+
+        @MITASK
+    
+    */
+
+        function getReverse(string){
+            return string.split("").reverse().join("")
+        }
+
+        console.log("reversed form:",getReverse('hello'));
+        
 
 
 /*
