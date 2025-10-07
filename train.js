@@ -188,13 +188,40 @@ MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
     
     */
 
-        function getReverse(string){
-            return string.split("").reverse().join("")
-        }
+        // function getReverse(string){
+        //     return string.split("").reverse().join("")
+        // }
 
-        console.log("reversed form:",getReverse('hello'));
+        // console.log("reversed form:",getReverse('hello'));
         
 
+        /*
+            TASK-F
+                Yagona string argumentga ega findDoublers nomli function tuzing
+            Agar stringda bittadan ortiq bir xil harflar ishtirok etgan bo'lsa
+            true yokida false natija qaytarsin.
+
+            MASALAN: findDoublers("hello"); natija true qaytadi. Sababi ikki marotaba takrorlangan 'll' harfi mavjud!
+
+        */
+
+            function findDoublers(string){
+                let count = {}
+                for(let i=0; i < string.length; i++){
+                    let char = string[i]
+
+                    if(count[char]){                        
+                        return true
+                    }else{
+                        count[char] = 1
+                    }
+                    
+                }
+                return false
+            }
+
+            console.log(findDoublers('apple'));
+            
 
 /*
 

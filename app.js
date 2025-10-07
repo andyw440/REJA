@@ -64,14 +64,21 @@ app.post("/create-item" , function(req,res){
     })
 })
 
+
+
+
 app.post('/delete-item' , (req,res) => {
     const id = req.body.id
     const db = require('./server').db()
-    db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, (err,data) => {
+    db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, 
+    (err,data) => {
         res.json({state:"success"})
     })
         
 })
+
+
+
 
 app.post('/edit-item' , (req,res) => {
     const data = req.body

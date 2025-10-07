@@ -27,6 +27,8 @@ function itemTemplate(item){
 
 let createField = document.getElementById('create-field')
 let form = document.getElementById('create-form')
+let itemList = document.getElementById('item-list')
+
 
 form.addEventListener('submit', (e) => {
 e.preventDefault()
@@ -34,8 +36,8 @@ e.preventDefault()
 axios.post("/create-item", {reja:createField.value})
 .then((response) => {
   console.log(response.data);
-  
-    document.getElementById('item-list').insertAdjacentHTML("beforeend" , itemTemplate(response.data))
+
+    itemList.insertAdjacentHTML("beforeend" , itemTemplate(response.data))
     createField.value = ""
     createField.focus()
 })
@@ -45,11 +47,18 @@ axios.post("/create-item", {reja:createField.value})
 })
 
 
+
+
+
+
+
 document.addEventListener('click', (e) => {
     if(e.target.classList.contains('delete-me')){
         if(confirm('Aniq ochirmoqchimisiz ?')){
             axios.post("/delete-item" , {id:e.target.getAttribute("data-id")})
             .then((response) => {
+              console.log(response.data);
+              
                 e.target.parentElement.parentElement.remove()
             })
             .catch((err) => {   
@@ -64,7 +73,7 @@ document.addEventListener('click', (e) => {
      let userInput = prompt("Yangi o'zgartirish kiriting" , initialValue ) 
      if(userInput){
       axios
-      .post("/edit-item  ", {id:e.target.getAttribute("data-id"), 
+      .post("/edit-item", {id:e.target.getAttribute("data-id"), 
         new_input:userInput,
       }).then((response) => {
         console.log(response.data);   
