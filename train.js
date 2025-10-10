@@ -235,13 +235,27 @@ MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
                     Va bu 21 soni arrayning tarkibidagi birinchi eng katta son hisobladi va bizga uning indeksi 1 qaytadi.
             */
 
-            function getHighestIndex(array){
-                 let highestNumber = array.reduce((a,b) => (a > b ? a:b))
-                return array.indexOf(highestNumber)
+            // function getHighestIndex(array){
+            //      let highestNumber = array.reduce((a,b) => (a > b ? a:b))
+            //     return array.indexOf(highestNumber)
             
-            }
+            // }
 
-            console.log(getHighestIndex([5,2,8,6]));
+            // console.log(getHighestIndex([5,2,8,6]));
+
+            /* 
+                TASK H: 
+                shunday function tuzing, u integerlardan iborat arrayni argument sifatida qabul qilib, faqat positive qiymatlarni olib string holatda return qilsin
+                MASALAN: getPositive([1, -4, 2]) return qiladi "12"
+            */
+
+                function getPositive(intArray){
+                  const positiveArr = intArray.filter(item => item > 0)
+                    const result = positiveArr.join("")
+                    
+                    return result.replace(result,`"${result}"`)
+                }
+            console.log(getPositive([7,-2,5,-6,1]));
             
 
 /*
